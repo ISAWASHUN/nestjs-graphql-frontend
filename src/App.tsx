@@ -5,10 +5,13 @@ import NotFound from './components/NotFound'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import client from './apploClient'
+import { ApolloProvider } from '@apollo/client'
 
 function App() {
 
   return (
+    <ApolloProvider client={client}>
     <BrowserRouter>
       <Routes>
       <Route path="/signin" element={<GuestRoute children={<SignIn />}/>}/>
@@ -17,6 +20,7 @@ function App() {
       <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
+    </ApolloProvider>
   )
 }
 
